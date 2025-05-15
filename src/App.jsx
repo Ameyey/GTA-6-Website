@@ -2,6 +2,7 @@ import './index.css'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useState } from 'react'
+import 'remixicon/fonts/remixicon.css'
 
 
 function App() {
@@ -22,7 +23,7 @@ let [ShowContent, setShowContent]= useState(false)
       transformOrigin:"50% 50%",
       opacity:0,
       onUpdate:function(){
-        if(this.progress() >= 0.9){
+        if(this.progress() > 0.9){
           document.querySelector(".svg").remove();
           setShowContent(true);
           this.kill()
@@ -74,17 +75,33 @@ let [ShowContent, setShowContent]= useState(false)
    </div>
    {ShowContent &&<div className="main w-full">
     <div className="landing w-full h-screen bg-black">
-      <div className='navbar absolute top-0 left-0 z-[10] w-full py-4 px-10 bg-red-500'>
-        
+      <div className='navbar absolute top-0 left-0 z-[10] w-full py-4 px-10 '>
+        <div className='logo flex gap-3'>
+          <div className='lines flex flex-col gap-[4px]'>
+            <div className='line w-10 h-1 bg-white'></div>
+            <div className='line w-8 h-1 bg-white'></div>
+            <div className='line w-5 h-1 bg-white'></div>
+          </div>
+          <h3 className='text-3xl mt-[-7px] leading-none text-white'>Rockstar</h3>
+        </div>
       </div>
       <div className="imagesdiv overflow-hidden relative w-full h-screen">
         <img className="absolute top-0 left-0 w-full h-full object-cover " src="./sky.png" alt="" />
         <img className="absolute top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
         <img className="absolute -bottom-[89.9%]  left-1/2 -translate-x-1/2 scale-[0.6]" src="./girlbg.png" alt="" />
       </div>
+      <div className='btmbar absolute bottom-0 left-0 w-full py-9 px-4 bg-gradient-to-t from-black to-transparent'>
+        <div className='flex gap-4 text-white '>
+          <i class="ri-arrow-down-line"></i>
+        <h3 className='font-[Helvetica_Now_Display]'>Scroll Down</h3>
+        </div>
     </div>
+     {/* <img className='absolute h-[45px]   left-3.2  -translate-x-1/2  -translate-y-1/2' src="./ps5.png" alt="" />    */}
+     
+   </div>
+
    </div>}
-  
+    53:53
    </>
   )
 }
