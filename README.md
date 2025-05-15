@@ -7,3 +7,5 @@ This template provides a minimal setup to get React working in Vite with HMR and
 They create image using <a href="https://openai.com/sora"><b>Sore ai prompt<b></a>
 
 They image in file a Public1 file
+
+<b>SVG</b> using a image a Designing IV
