@@ -1,8 +1,11 @@
 import './index.css'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { useState } from 'react'
+
+
 function App() {
- 
+let [ShowContent, setShowContent]= useState(false)
   useGSAP(()=>{
     const tl= gsap.timeline();
 
@@ -10,15 +13,21 @@ function App() {
       rotate:10,
       duration:2,
       ease:"Power4.easeInOut",
-      transformOrigin:"50% 50%",
-    })
-    .to(".vi-mask-group",{
+      transformOrigin:" 50% 50% ",
+    }).to(".vi-mask-group",{
       scale:10,
-      duration:2,
+      duration: 2,
       delay:-1.8,
-      ease:"Expo.easeInOut",
+      ease: "Expo.easeInOut",
       transformOrigin:"50% 50%",
-      opacity:0
+      opacity:0,
+      onUpdate:function(){
+        if(this.progress() >= 0.9){
+          document.querySelector(".svg").remove();
+          setShowContent(true);
+          this.kill()
+        }
+      }
     })
 
 
@@ -63,6 +72,18 @@ function App() {
       />
      </svg>
    </div>
+   {ShowContent &&<div className="main w-full">
+    <div className="landing w-full h-screen bg-black">
+      <div className='navbar absolute top-0 left-0 z-[10] w-full py-4 px-10 bg-red-500'>
+        
+      </div>
+      <div className="imagesdiv overflow-hidden relative w-full h-screen">
+        <img className="absolute top-0 left-0 w-full h-full object-cover " src="./sky.png" alt="" />
+        <img className="absolute top-0 left-0 w-full h-full object-cover" src="./bg.png" alt="" />
+        <img className="absolute -bottom-[89.9%]  left-1/2 -translate-x-1/2 scale-[0.6]" src="./girlbg.png" alt="" />
+      </div>
+    </div>
+   </div>}
   
    </>
   )
